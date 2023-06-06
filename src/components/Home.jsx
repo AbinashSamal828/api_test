@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
   const [currData, setData] = useState([]);
   const [pageno, setPageno] = useState(1);
+  const [totalPages,setTotalPages]=useState(0);
 
   useEffect(() => {
     fetch("https://reqres.in/api/users?page="+pageno)
@@ -10,9 +11,20 @@ const Home = () => {
       .then((data) => {
         console.log(data);
         setData(data.data); 
+        setTotalPages(data.total_pages);
       });
   }, [pageno]);
-
+  const renderButtons = () => {
+    const buttons = [];
+    for (let i = 1; i <= totalPages; i++) {
+      buttons.push(
+        <button key={i} onClick={() => clickHandler(i)}>
+          {i}
+        </button>
+      );
+    }
+    return buttons;
+  };
   const clickHandler = (pno) => {
     setPageno(pno);
   };
@@ -26,8 +38,9 @@ const Home = () => {
           <img src={user.avatar} alt="Avatar" />
         </div>
       ))}
-      <button onClick={() => clickHandler(1)}>1</button>
-      <button onClick={() => clickHandler(2)}>2</button>
+      {renderButtons()}
+      {/* <button onClick={() => clickHandler(1)}>1</button>
+      <button onClick={() => clickHandler(2)}>2</button> */}
     </div>
   );
 };
