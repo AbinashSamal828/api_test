@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import Home from './components/Home';
+import Click from './components/Click';
 
 function App() {
   const [currButState,setcurrBut]=useState(0);
@@ -14,7 +15,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Home/>
+      {/* <Home/> */}
+      <Click/>
     </div>
   );
 }
