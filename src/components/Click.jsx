@@ -3,13 +3,9 @@ import React, { useState ,useEffect} from "react";
 const Click = () => {
   //   const [currInput, setCurrInput] = useState("");
     // const [clicked, setClicked] = useState(false);
-  const [xmar, setXMar] = useState(0);
-  const [ymar, setYMar] = useState(0);
+//   const [xmar, setXMar] = useState(0);
+//   const [ymar, setYMar] = useState(0);
   const [coordinates, setCoordinates] = useState([]);
-  useEffect(() => {
-    console.log(coordinates);
-  }, [coordinates]);
-
   return (
     <div
       style={{ backgroundColor: "black", width: "100vw", height: "100vh" }}
@@ -17,8 +13,8 @@ const Click = () => {
         // console.log(e);
         const xmar = e.clientX;
         const ymar = e.clientY;
-        // await setYMar(e.clientY);
-        // await setXMar(e.clientX);
+        // setYMar(e.clientY);
+        // setXMar(e.clientX);
         setCoordinates((prevCoors)=>{
             console.log(xmar,ymar);
             return [...prevCoors,{xmar,ymar}];
